@@ -1,24 +1,21 @@
-from http import client
-
-
 class Clientes:
     pk: int = None
     nombre: str = None
     nit: str = None
     nombre_contacto: str = None
     telefono: str = None
-    direccion:str = 'null'
+    direccion: str = 'null'
     correo: str = None
-
 
     def __str__(self):
         return self.nombre
 
+    def __init__(self, nombre_param, nit_param=None) -> None:
+        self.nombre = nombre_param
+        self.nit = nit_param
 
-    def __init__(self, nombre=None, nit=None) -> None:
-        self.nombre = nombre
-        self.nit = nit
-
+        if self.nombre == 'OSP':
+            self.nombre_contacto = 'Jeisson Manrique'
 
     def create(self, cursor, conn):
         query = f"""
@@ -32,7 +29,6 @@ class Clientes:
 
         return _id
 
-
     @staticmethod
     def list(cursor):
         query = "SELECT * FROM Clientes"
@@ -42,7 +38,7 @@ class Clientes:
         for cliente in clientes_data:
             kwargs = {
                 "nombre": cliente[1],
-                "nit": cliente[2], 
+                "nit": cliente[2],
             }
             instancia_cliente = Clientes(**kwargs)
             instancia_cliente.nombre_contacto = cliente[3]
@@ -53,7 +49,6 @@ class Clientes:
             clientes.append(instancia_cliente)
 
         return clientes
-
 
     def retrieve(self, cursor, pk):
         query = f"""SELECT * FROM Clientes WHERE id = {pk} LIMIT 1"""
@@ -67,7 +62,6 @@ class Clientes:
         self.direccion = cliente_data[5]
         self.correo = cliente_data[6]
 
-
     def update(self, conn, cursor, valores):
         query = f"""
             UPDATE Clientes SET nombre = '{valores['nombre']}', nit = '{valores['nit']}', contacto = '{valores['contacto']}', 
@@ -78,7 +72,6 @@ class Clientes:
         conn.commit()
 
         self.retrieve(cursor, self.pk)
-
 
     def delete(self, conn, cursor):
         query = f"DELETE FROM Clientes WHERE id = {self.pk}"

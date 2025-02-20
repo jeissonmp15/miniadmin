@@ -1,7 +1,5 @@
-from pydoc import cli
 from clientes.crud import Clientes
 from connection import connect_db, close_connection
-
 
 if __name__ == '__main__':
 
@@ -11,10 +9,11 @@ if __name__ == '__main__':
     _request = input("Escoge una opcion:\r\n 1: Clientes \r\n 2: Activos \r\n 3: Equipos \r\n")
 
     if _request == '1':
-        _request = input("Escoge una opcion:\r\n 1: Crear \r\n 2: Listar \r\n 3: Detalle \r\n 4: Actualizar \r\n 5: Eliminar\r\n1")
+        _request = input(
+            "Escoge una opcion:\r\n 1: Crear \r\n 2: Listar \r\n 3: Detalle \r\n 4: Actualizar \r\n 5: Eliminar\r\n1")
 
         if _request == '1':
-            cliente = Clientes(nombre='Brinks', nit='34235245') # Obligatorio __init__
+            cliente = Clientes(nombre_param='Brinks', nit_param='34235245')  # Obligatorio __init__
             cliente.nombre_contacto = 'John Fawer'
             cliente.telefono = '24523 EXT 405'
             cliente.correo = 'negocios@ospinn.com'
@@ -34,7 +33,7 @@ if __name__ == '__main__':
                     Dirección: {cliente.direccion} \r\n
                     Correo: {cliente.correo} \r\n
                     """
-                    )
+                      )
 
         elif _request == '3':
             pk = 5
@@ -49,8 +48,8 @@ if __name__ == '__main__':
                     Dirección: {cliente.direccion} \r\n
                     Correo: {cliente.correo} \r\n
                     """
-                    )
-        
+                  )
+
         elif _request == '4':
             pk = 5
             cliente = Clientes()
@@ -70,6 +69,4 @@ if __name__ == '__main__':
             cliente.retrieve(cursor, pk)
             cliente.delete(conn, cursor)
 
-        
-        
     close_connection(cursor, conn)
