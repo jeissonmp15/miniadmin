@@ -34,10 +34,11 @@ class Clientes:
         query = "SELECT * FROM Clientes"
         cursor.execute(query)
         clientes_data = cursor.fetchall()
+        print(clientes_data)
         clientes = []
         for cliente in clientes_data:
             kwargs = {
-                "nombre": cliente[1],
+                "nombre_param": cliente[1],
                 "nit": cliente[2],
             }
             instancia_cliente = Clientes(**kwargs)
