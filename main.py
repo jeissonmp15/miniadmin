@@ -13,8 +13,10 @@ if __name__ == '__main__':
             "Escoge una opcion:\r\n 1: Crear \r\n 2: Listar \r\n 3: Detalle \r\n 4: Actualizar \r\n 5: Eliminar\r\n1")
 
         if _request == '1':
-            cliente = Clientes(nombre_param='Brinks', nit_param='34235245')  # Obligatorio __init__
-            cliente.nombre_contacto = 'John Fawer'
+            nombre_cliente = input("Ingrese el nombre del cliente: \r\n")
+            nit = input("Ingrese el nit: \r\n")
+            cliente = Clientes(nombre_param=nombre_cliente, nit_param=nit)  # Obligatorio __init__
+            cliente.nombre_contacto = input("Ingrese el nombre de contacto: \r\n")
             cliente.telefono = '24523 EXT 405'
             cliente.correo = 'negocios@ospinn.com'
             cliente.direccion = 'Calle 2'
