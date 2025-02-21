@@ -67,7 +67,7 @@ class Clientes:
         query = f"""
             UPDATE Clientes SET nombre = '{valores['nombre']}', nit = '{valores['nit']}', contacto = '{valores['contacto']}', 
             correo = '{valores['correo']}'
-            WHERE id = {self.pk}
+            WHERE pk = {self.pk}
         """
         cursor.execute(query)
         conn.commit()
