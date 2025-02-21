@@ -10,7 +10,7 @@ class Clientes:
     def __str__(self):
         return self.nombre
 
-    def __init__(self, nombre_param, nit_param=None) -> None:
+    def __init__(self, nombre_param=None, nit_param=None) -> None:
         self.nombre = nombre_param
         self.nit = nit_param
 
