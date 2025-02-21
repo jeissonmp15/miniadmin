@@ -39,7 +39,7 @@ class Clientes:
         for cliente in clientes_data:
             kwargs = {
                 "nombre_param": cliente[1],
-                "nit": cliente[2],
+                "nit_param": cliente[2],
             }
             instancia_cliente = Clientes(**kwargs)
             instancia_cliente.nombre_contacto = cliente[3]
