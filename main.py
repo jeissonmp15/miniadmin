@@ -66,9 +66,9 @@ if __name__ == '__main__':
             cliente.update(conn, cursor, valores)
 
         elif _request == '5':
-            pk = 9
+            pk = 3
             cliente = Clientes()
-            cliente.retrieve(cursor, pk)
-            cliente.delete(conn, cursor)
+            # cliente.retrieve(cursor, pk)
+            cliente.delete(conn, cursor, pk)
 
     close_connection(cursor, conn)

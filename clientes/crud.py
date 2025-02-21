@@ -74,7 +74,7 @@ class Clientes:
 
         self.retrieve(cursor, self.pk)
 
-    def delete(self, conn, cursor):
-        query = f"DELETE FROM Clientes WHERE id = {self.pk}"
+    def delete(self, conn, cursor, pk):
+        query = f"DELETE FROM Clientes WHERE pk = {pk}"
         cursor.execute(query)
         conn.commit()
