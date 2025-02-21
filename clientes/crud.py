@@ -52,7 +52,7 @@ class Clientes:
         return clientes
 
     def retrieve(self, cursor, pk):
-        query = f"""SELECT * FROM Clientes WHERE id = {pk} LIMIT 1"""
+        query = f"""SELECT * FROM Clientes WHERE pk = {pk} LIMIT 1"""
         cursor.execute(query)
         cliente_data = cursor.fetchone()
         self.pk = cliente_data[0]
